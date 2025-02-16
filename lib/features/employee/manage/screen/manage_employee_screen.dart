@@ -48,13 +48,14 @@ class ManageEmployeeScreen extends StatelessWidget {
                           hintText: "Employee Name",
                           controller: cubit.tecEmployeeName,
                           isRequired: true,
+                          maxLines: 1,
                           prefixIcon: const Icon(
                             Icons.person_2_outlined,
                             color: ColorName.blueColor,
                           ),
                           formatters: [
                             FilteringTextInputFormatter.allow(
-                              RegExp(r'[A-Z|a-z]'),
+                              RegExp(r'[A-Z a-z]'),
                             ),
                             LengthLimitingTextInputFormatter(50)
                           ],
