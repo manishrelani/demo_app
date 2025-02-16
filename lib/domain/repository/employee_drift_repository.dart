@@ -38,7 +38,7 @@ class EmployeeDriftRepository {
       ..where(
         (emp) =>
             emp.name.equals(employee.name) &
-            emp.role.equals(employee.name) &
+            emp.role.equals(employee.role) &
             emp.startDate.equals(employee.startDate) &
             emp.endDate.equalsNullable(employee.endDate),
       )
