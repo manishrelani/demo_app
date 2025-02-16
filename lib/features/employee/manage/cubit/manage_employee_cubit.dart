@@ -109,14 +109,19 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
         endDate: _endDateTime,
       );
 
-      if (data.id == 0) {
-        final isExist = await _employeeRepository.isEmployeeExist(data);
-
-        if (isExist) {
-          SnackToast.show(message: "Employee already exits");
-          return;
-        }
+      if (employee == data) {
+        SnackToast.show(message: "No data to updated");
+        return;
       }
+
+      // if (data.id == 0) {
+      final isExist = await _employeeRepository.isEmployeeExist(data);
+
+      if (isExist) {
+        SnackToast.show(message: "Employee already exits");
+        return;
+      }
+      // }
 
       data.showLog;
 

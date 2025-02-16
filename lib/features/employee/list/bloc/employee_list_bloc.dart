@@ -25,7 +25,7 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
 
   List<EmployeeModel> get previousEmployees => [...pEmpPagingController.itemList ?? []];
 
-  static const int _pageSize = 10;
+  static const int _pageSize = 20;
 
   final cEmpPagingController = PagingController<int, EmployeeModel>(
     firstPageKey: 1,
