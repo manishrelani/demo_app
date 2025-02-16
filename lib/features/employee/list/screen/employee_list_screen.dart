@@ -37,7 +37,19 @@ class EmployeeListScreen extends StatelessWidget {
           } else if (state is EmployeeListLoadedState) {
             if (bloc.currentEmployees.isEmpty && bloc.previousEmployees.isEmpty) {
               return Center(
-                child: Assets.svgs.noEmployeeGraphic.svg(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Assets.svgs.noEmployeeGraphic.svg(),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
+                    const Text(
+                      "No employee records found",
+                      style: CustomTextStyles.k18Medium,
+                    )
+                  ],
+                ),
               );
             }
 
