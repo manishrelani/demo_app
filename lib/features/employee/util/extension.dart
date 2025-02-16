@@ -1,4 +1,4 @@
-import '../../../../domain/model/employee_model.dart';
+import '../../../domain/model/employee_model.dart';
 
 extension CheckEmployee on EmployeeModel {
   bool get isPreviousEmployee {

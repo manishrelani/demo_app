@@ -1,16 +1,18 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:faker/faker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:meta/meta.dart';
+import 'package:realtime/features/employee/util/enum.dart';
 
 import '../../../../core/util/extension/object_extension.dart';
 import '../../../../core/util/method/snack_bar.dart';
 import '../../../../domain/model/employee_model.dart';
 import '../../../../domain/repository/employee_drift_repository.dart';
-import '../../manage/util/extension.dart';
+import '../../util/extension.dart';
 import '../util/delete_employee_command.dart';
 
 part 'employee_list_event.dart';
@@ -47,8 +49,10 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
     _initialize();
   }
 
-  void _initialize() {
+  void _initialize() async {
     add(InitializeEmployeeEvent());
+
+    // await _addFakeEmployee();
 
     cEmpPagingController.addPageRequestListener((pageKey) {
       if (pageKey > 1) {
@@ -201,6 +205,28 @@ class EmployeeListBloc extends Bloc<EmployeeListEvent, EmployeeListState> {
       e.showLog;
       s.showLog;
     }
+  }
+
+  // ignore: unused_element
+  Future<void> _addFakeEmployee() async {
+    final faker = Faker();
+    final List<EmployeeModel> list = [];
+
+    final today = DateTime.now();
+
+    while (list.length < 40) {
+      list.add(EmployeeModel(
+        id: 0,
+        name: faker.person.name(),
+        role: EmployeeRole.values[(faker.randomGenerator.integer(4))].title,
+        startDate: faker.date.dateTimeBetween(DateTime(2024, 1, 1), today),
+        endDate: faker.randomGenerator.boolean()
+            ? null
+            : faker.date.dateTimeBetween(DateTime(2024, 8), DateTime(today.year, today.month + 2)),
+      ));
+    }
+
+    await _employeeRepository.addListOfEmployee(list);
   }
 
   @override

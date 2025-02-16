@@ -27,6 +27,12 @@ class EmployeeDriftRepository {
     return (data as List).fromList(EmployeeModel.fromTable);
   }
 
+  Future<void> addListOfEmployee(List<EmployeeModel> employees) async {
+    await _database.batch((batch) {
+      batch.insertAll(_database.employeeTable, employees.map((e) => e.toCompanion()));
+    });
+  }
+
   Future<bool> isEmployeeExist(EmployeeModel employee) async {
     final query = _database.select(_database.employeeTable)
       ..where(

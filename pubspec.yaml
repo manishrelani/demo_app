@@ -24,6 +24,8 @@ dependencies:
   intl: ^0.20.2
   equatable: ^2.0.7
   meta: ^1.15.0
+  faker: ^2.2.0
+
 
   # System
   path: ^1.9.0
@@ -41,7 +43,6 @@ dependencies:
   #UI
   table_calendar: ^3.2.0
   flutter_svg: ^2.0.17
-  # faker: ^2.2.0
   infinite_scroll_pagination: ^4.1.0
   flutter_slidable: ^4.0.0
   loader_overlay: ^5.0.0

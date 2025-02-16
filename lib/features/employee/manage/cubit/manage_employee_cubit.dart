@@ -8,7 +8,7 @@ import '../../../../core/util/extension/object_extension.dart';
 import '../../../../core/util/global.dart';
 import '../../../../core/util/method/snack_bar.dart';
 import '../../../../domain/model/employee_model.dart';
-import '../util/enum.dart';
+import '../../util/enum.dart';
 
 part 'manage_employee_state.dart';
 
