@@ -146,7 +146,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   title: "Save",
                   onPressed: () {
                     Navigator.pop(context);
-                    widget.onSelect?.call(_focusedDay.value);
+                    widget.onSelect?.call(
+                      _focusedDay.value,
+                    );
                   },
                 ),
               ],

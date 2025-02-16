@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:realtime/domain/repository/employee_drift_repository.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../core/util/extension/date_extension.dart';
 import '../../../../core/util/extension/object_extension.dart';
@@ -35,6 +36,8 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
 
   final DateTime today = DateTime.now();
 
+  bool isToday(DateTime time) => isSameDay(time, today);
+
   DateTime? _startDateTime;
   DateTime? get startDateTime => _startDateTime;
 
@@ -44,8 +47,8 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
   void _setup(EmployeeModel employee) {
     tecEmployeeName.text = employee.name;
     tecRole.text = employee.role;
-    tecStartDate.text = employee.startDate.todMMMyyyy();
-    tecEndDate.text = employee.endDate?.todMMMyyyy() ?? '';
+    tecStartDate.text = _getDateValue(employee.startDate) ?? '';
+    tecEndDate.text = _getDateValue(employee.endDate) ?? '';
 
     _startDateTime = employee.startDate;
     _endDateTime = employee.endDate;
@@ -53,7 +56,7 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
 
   void onSelectStartDate(DateTime date) {
     _startDateTime = date;
-    tecStartDate.text = date.todMMMyyyy();
+    tecStartDate.text = _getDateValue(date) ?? '';
 
     if (_endDateTime?.isBefore(date) ?? false) {
       _endDateTime = null;
@@ -67,7 +70,17 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
       return;
     }
     _endDateTime = date;
-    tecEndDate.text = date?.todMMMyyyy() ?? '';
+    tecEndDate.text = _getDateValue(date) ?? '';
+  }
+
+  String? _getDateValue(DateTime? time) {
+    if (time == null) return null;
+
+    if (isToday(time)) {
+      return "Today";
+    }
+
+    return time.todMMMyyyy();
   }
 
   void onSelectRole(EmployeeRole role) {
