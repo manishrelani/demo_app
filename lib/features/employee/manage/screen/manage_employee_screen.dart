@@ -56,6 +56,7 @@ class ManageEmployeeScreen extends StatelessWidget {
                             FilteringTextInputFormatter.allow(
                               RegExp(r'[A-Z|a-z]'),
                             ),
+                            LengthLimitingTextInputFormatter(50)
                           ],
                         ),
                         const SizedBox(
