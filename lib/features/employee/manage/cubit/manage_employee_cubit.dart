@@ -110,7 +110,7 @@ class ManageEmployeeCubit extends Cubit<ManageEmployeeState> {
       );
 
       if (employee == data) {
-        SnackToast.show(message: "No data to updated");
+        SnackToast.show(message: "No data to update");
         return;
       }
 
