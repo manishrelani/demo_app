@@ -1,0 +1,83 @@
+name: realtime
+description: "This is a demo project"
+
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  cupertino_icons: ^1.0.8
+
+  #State managment
+  flutter_bloc: ^9.0.0
+  # objectbox: ^4.1.0
+  # objectbox_flutter_libs: any
+  
+  #Formation
+  intl: ^0.20.2
+  equatable: ^2.0.7
+  meta: ^1.15.0
+
+  # System
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  
+  #Dependancy Injection
+  get_it: ^8.0.3
+
+  # Database
+  drift: ^2.25.1
+  drift_flutter: ^0.2.4
+  # sqlite3_flutter_libs: ^0.5.30
+
+
+  #UI
+  table_calendar: ^3.2.0
+  flutter_svg: ^2.0.17
+  # faker: ^2.2.0
+  infinite_scroll_pagination: ^4.1.0
+  flutter_slidable: ^4.0.0
+  loader_overlay: ^5.0.0
+
+  
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  
+  flutter_lints: ^5.0.0
+  drift_dev: ^2.0.0
+  flutter_gen: ^5.4.0
+  build_runner: ^2.4.15
+  flutter_gen_runner: ^5.9.0
+  # objectbox_generator: any
+
+
+
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
+  # colors:
+  #   inputs:
+      # - assets/colors/colors.xml
+
+  # Optional
+  integrations:
+    flutter_svg: true
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  assets:
+    - assets/svgs/
+   
+ 
